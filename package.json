@@ -1,8 +1,8 @@
 {
     "name": "aws-api-gateway",
-    "version": "2014-06-24",
+    "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "aws-sdk",
+        "aws-sdk": "2.0.x"
     }
 }
