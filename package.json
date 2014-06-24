@@ -1,9 +1,11 @@
 {
     "name": "aws-api-gateway",
+    "description": "An endpoint gateway for access to Amazon AWS API",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
         "aws-sdk": ">= 2.0.x",
-        "node-uuid": ">= 1.4.x"
+        "node-uuid": ">= 1.4.x",
+        "express": "3.x"
     }
 }
