@@ -6,6 +6,7 @@
     "dependencies": {
         "aws-sdk": ">= 2.0.x",
         "node-uuid": ">= 1.4.x",
-        "express": "3.x"
+        "express": "3.x",
+        "redis": "*"
     }
 }
