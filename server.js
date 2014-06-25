@@ -14,6 +14,8 @@ AWS.config.loadFromPath('./config.json');
 
 var s3 = new AWS.S3();
 var elb = new AWS.ELB();
+var route53 = new AWS.Route53();
+var support = new AWS.Support();
 
 s3.listBuckets(function(err, data) {
     if (err)
@@ -112,6 +114,71 @@ app.get('/elb/:name/health', function(req, res) {
 	  LoadBalancerName: req.params.name
 	};
 	elb.describeInstanceHealth(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});
+});
+
+app.get('/route53/zones', function(req, res) {
+	route53.listHostedZones(function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});
+});
+
+app.get('/route53/zones', function(req, res) {
+	route53.listHostedZones(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});
+});
+
+app.get('/route53/:id/zone', function(req, res) {
+	var params = {
+	  Id: req.params.id
+	};
+	route53.getHostedZone(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});	
+});
+
+app.get('/route53/:id/records', function(req, res) {
+	var params = {
+	  HostedZoneId: req.params.id // required
+	};
+	route53.listResourceRecordSets(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});	
+});
+
+app.get('/support/cases', function(req,res) {
+	var params = {
+	  caseId: 'STRING_VALUE' // required
+	};
+	support.describeCommunications(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else {
+			res.json(data);
+		}
+	});
+});
+
+app.get('/support/cases/all', function(req, res){
+	var params = {
+	};
+	support.describeCases(params, function(err, data) {
 		if (err) console.log(err, err.stack); 
 		else {
 			res.json(data);
