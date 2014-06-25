@@ -130,15 +130,6 @@ app.get('/route53/zones', function(req, res) {
 	});
 });
 
-app.get('/route53/zones', function(req, res) {
-	route53.listHostedZones(params, function(err, data) {
-		if (err) console.log(err, err.stack); 
-		else {
-			res.json(data);
-		}
-	});
-});
-
 app.get('/route53/:id/zone', function(req, res) {
 	var params = {
 	  Id: req.params.id
