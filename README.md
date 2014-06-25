@@ -23,7 +23,19 @@ Numerous prelimary routes have been added for the REST API.
 * `/elb/:name` returns configuration details for load balanecer specified by :name
 * `/elb/:name/health` returns the state of the instances associated with load balancer specified by :name
 
+##### Route53 (DNS)
+* `/route53/zones` returns list of hosted zones
+* `/route53/:id/zone` returns information for zone specified by :id (not domain name!)
+* `/route53/:id/records` returns DNS records withing specified hosted zone by :id (not domain name!)
+
+##### Support (tickets)
+The API support for interacting with Amazon AWS support cases is very limited and only in for testing.  It is not properly fetching cases, but I am unsure as to why, yet..
+
+* `/support/cases` returns a list of cases, open or resolved, useful for identifying case ID(s)
+* `/support/cases/all` returns information exchanged within all support tickets / cases.
+
+
 #### TODO:
 * Authenticate with gateway profile using OAuth
 * Test that ACCESS_KEY and SECRET only allow limited access
-* ...
+* Work on Amazon "Support" -support so that I can properly view, read, and interact with support cases (trouble tickets).
